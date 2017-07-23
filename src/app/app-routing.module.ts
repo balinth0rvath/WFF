@@ -1,0 +1,21 @@
+import { SignupComponent } from './authorization/signup/signup.component';
+import { SigninComponent } from './authorization/signin/signin.component';
+import { DashBoardComponent } from './base/dash-board/dash-board.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+
+const appRoutes: Routes = [
+    { path: '', component: DashBoardComponent },
+    { path: 'home', component: DashBoardComponent },
+    { path: 'signin', component: SigninComponent },
+    { path: 'signup', component: SignupComponent}
+
+];
+
+@NgModule({
+    imports: [RouterModule.forRoot(appRoutes,{preloadingStrategy: PreloadAllModules})],
+    exports: [RouterModule]
+})
+export class AppRoutingModule {
+
+}

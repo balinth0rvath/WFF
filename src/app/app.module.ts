@@ -1,3 +1,6 @@
+import { AppRoutingModule } from './app-routing.module';
+import { AccountService } from './service/account.service';
+import { AuthorizationService } from './authorization/authorization.service';
 import { BaseModule } from './base/base.module';
 import { AuthorizationModule } from './authorization/authorization.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,9 +23,11 @@ import { DashBoardComponent } from './base/dash-board/dash-board.component';
     FormsModule,
     HttpModule,
     AuthorizationModule,
+    AppRoutingModule, 
     BaseModule
   ],
-  providers: [],
+  providers: [AuthorizationService, AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

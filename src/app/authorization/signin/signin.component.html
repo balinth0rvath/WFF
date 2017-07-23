@@ -1,3 +1,27 @@
-<p>
-  signin works!
-</p>
+<div class="row">
+  <h2 class="text-center">Belépés a TKE digitális platformra</h2>
+</div>
+
+<div class="row col-xs-12 col-sm-6 col-md-4 col-lg-4 
+            col-sm-offset-3 col-md-offset-4 col-lg-offset-4 sign-in-background">
+  <form (ngSubmit)="onLogin(f)" #f="ngForm">
+
+    <div *ngIf="loginFailed" class="form-danger">
+       <p class="text-center">Hibás felhasználónév, vagy jelszó</p>
+    </div>
+    
+    <div class="form-group">
+      <label for="email">E-Mail</label>
+      <input type="email" name="email" id="email" ngModel class="form-control" email>
+    </div>
+    <div class="form-group">
+      <label for="password">Jelszó</label>
+      <input type="password" name="password" id="password" ngModel class="form-control" required>
+    </div>
+    <button class="btn btn-success center-block sign-in-button sign-in-space" type="submit">Belépés</button>
+    <hr>
+    <p class="text-center">VAGY</p>
+    <hr>
+    <button class="btn btn-default center-block sign-in-button facebook-color" type="submit">Belépés Facebookkal</button>
+  </form>
+</div>

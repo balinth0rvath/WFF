@@ -1,0 +1,22 @@
+.sign-in-button {
+    width: 100%
+}
+
+.sign-in-space {
+    margin-top: 30px;
+}
+
+.sign-in-background {
+    padding-top: 20px;
+    padding-bottom : 20px;
+
+}
+
+.facebook-color {
+    background-color: #3B5998;
+    border-color: #3B5998;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid crimson;
+}
