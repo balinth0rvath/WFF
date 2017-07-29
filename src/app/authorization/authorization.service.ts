@@ -11,15 +11,23 @@ export class AuthorizationService {
 
   access_token: string;
   refresh_token: string;
-
+  
   authenticated: Subject<boolean>=new Subject<boolean>();
-
-  a: Account;
 
   constructor(private http: Http) { }
 
   isAuthenticated() {
-    return this.refresh_token != null;
+    let authenticated=false;
+    console.log(this.access_token);
+    if (this.access_token==null) {
+      var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if (currentUser!=null && currentUser.token!=null) {
+        this.access_token = currentUser.token;
+      }
+    }
+    
+    
+    return this.access_token != null;
   }
 
   getRefreshToken(username: string, password: string) {
@@ -72,6 +80,8 @@ export class AuthorizationService {
 
     this.access_token = data.access_token;
     this.refresh_token = data.refresh_token;
+    localStorage.setItem('currentUser', 
+      JSON.stringify({ token: this.access_token, name: name }));
     this.authenticated.next(true);
   }
 
@@ -100,6 +110,8 @@ export class AuthorizationService {
   logout() {
     this.access_token = null;
     this.refresh_token = null;
+    localStorage.removeItem('currentUser');
     this.authenticated.next(false);
+
   }
 }
