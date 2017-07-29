@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs/Subject';
 import { Account } from './../model/account.model';
 import { AuthorizationService } from './../authorization/authorization.service';
 import { Injectable } from '@angular/core';
@@ -9,6 +10,7 @@ export class AccountService {
   private resourceMyAccount = 'account/myAccount'
   accountList: Account[];
   myAccount: Account;
+  myAccountFetched= new Subject<Account>();
   constructor(private authorizationService: AuthorizationService) { }
 
   getAccounts(): Account[] {
@@ -25,8 +27,15 @@ export class AccountService {
 
   fetchMyAccount() {
     this.authorizationService.getData<Account>(this.resourceMyAccount)
-      .subscribe((account: Account) => { this.myAccount = account },
-      () => { console.log('error fetching account') });
+      .subscribe((account: Account) => { 
+        this.myAccountFetched.next(account); 
+         },
+      (err:Response) => { 
+        if (err.status === 401) {
+          console.log("invalid access token. trying to fetch new");
+          this.authorizationService.getAccessToken();
+        }
+       });
   }
 
   getMyAccount() {

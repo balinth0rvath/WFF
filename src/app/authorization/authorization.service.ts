@@ -1,7 +1,7 @@
 import { Config } from './../config/config';
 import { Account } from './../model/account.model';
 import { Injectable } from '@angular/core';
-import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Http, RequestOptions, Headers, Response, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -46,11 +46,37 @@ export class AuthorizationService {
 
   }
 
+  getAccessToken() {
+    let param = new URLSearchParams();
+    param.append('refresh_token', this.refresh_token);
+    param.append('grant_type', 'refresh_token');
+
+    let headers = new Headers(
+      {
+        'credentials': 'true',
+        'Content-type': Config.contentType,
+        'Authorization': Config.authType + Config.clientCreds
+      });
+    let options = new RequestOptions({ headers: headers });
+    
+    this.http.post(Config.tokenUrl, param.toString(), options)
+      .map(res => res.json())
+      .subscribe(
+      data => this.saveAccessToken(data),
+      err =>  this.authenticated.next(false)
+    );
+
+  }
+
   save(data) {
 
     this.access_token = data.access_token;
     this.refresh_token = data.refresh_token;
     this.authenticated.next(true);
+  }
+
+  saveAccessToken(data) {
+    this.access_token = data.access_token;
   }
 
   getData<T>(resourceName:string) {
@@ -65,7 +91,8 @@ export class AuthorizationService {
       .map((res: Response) => {
         let t: T = res.json();
         return t;
-      });
+      },
+      (err:Error)=>{console.log("Hiba:"+err)});
       ;
 
   }

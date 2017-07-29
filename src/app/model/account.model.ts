@@ -1,10 +1,14 @@
 export class Account {
-    fullName:string;
     id:number;
+    fullName:string;
+    email:string;
+    introduction:string;
+    
 
-    constructor(fullName, id) {
+    constructor(id, fullName, email, introduction) {
         this.id = id;
         this.fullName = fullName;
-        
+        this.email = email;
+        this.introduction = introduction;    
     }
 }
