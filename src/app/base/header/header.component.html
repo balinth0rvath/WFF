@@ -1,30 +1,114 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+<nav  class="navbar navbar-default header-no-border-radius" 
+      *ngIf="authorizationService.isAuthenticated()" >
+  <div class="container-fluid" >
     <div class="navbar-header">
-      
-      <a class="navbar-brand" href="http://www.tukorhegy.hu/">TKE</a>
+      <div class="dropdown" baseDropdown>
+        <button type="button" 
+              class="navbar-toggle dropdown-toggle collapsed pull-left header-little-margin btn-lg" 
+              data-toggle="collapse" 
+              data-target="#collapse-left" 
+              aria-expanded="false">
+          <span class="sr-only">Toggle groupmenu</span>
+          <span class="glyphicon glyphicon-user header-group-icon"></span>
+        </button>
+        <ul class=" dropdown-menu  
+                    header-left-dropdown 
+                    header-left-dropdown-tablet 
+                    header-dropdown-spacing-out">
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing-top">
+                    <span class="glyphicon glyphicon-envelope header-icon-dd">
+                    </span>Admin
+                </a>
+            </li>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="glyphicon glyphicon-calendar header-icon-dd">
+                    </span>Csoportjaim
+                </a>
+            </li>
+        </ul>
+      </div>
+      <div class="dropdown" baseDropdown>
+      <button type="button" 
+              class="navbar-toggle dropdown-toggle collapsed header-little-margin" 
+              data-toggle="collapse" 
+              data-target="#collapse-right" 
+              aria-expanded="false">
+        <span class="sr-only">Toggle usernemu</span>
+        <span class="icon-bar header-icon-bar-top"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar header-icon-bar-bottom"></span>
+      </button>
+      <ul class="dropdown-menu header-right-dropdown header-right-dropdown-tablet header-dropdown-spacing-out">
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing-top">
+                    <span class="glyphicon glyphicon-envelope header-icon-dd">
+                    </span>Üzenetek
+                </a>
+            </li>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="glyphicon glyphicon-calendar header-icon-dd">
+                    </span>Naptár
+                </a>
+            </li>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="glyphicon glyphicon-user header-icon-dd">
+                    </span>Profil
+                </a>
+            </li>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing-quit" (click)="logout()">
+                    <span class="glyphicon glyphicon-log-out header-icon-dd">
+                    </span>Kilépés
+                </a>
+            </li>
+          </ul>
+      </div>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div  *ngIf="authorizationService.isAuthenticated()" 
-          class="collapse navbar-collapse" 
-          id="bs-example-navbar-collapse-1">
-      
+    <div class="collapse navbar-collapse pull-sm-left header-less-left-padding" 
+         id="collapse-left">
+      <ul class="nav navbar-nav">
+        <li><a href="#">
+            <span class="glyphicon glyphicon-cog  header-icon">
+            </span>Admin
+          </a>
+        </li>
+        <li><a href="#">
+            <span class="glyphicon glyphicon-home header-icon">
+            </span>Csoportjaim
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="collapse navbar-collapse" id="collapse-right">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">
-          <span class="glyphicon glyphicon-envelope wff-header-icon"></span>Üzenetek
-        </a></li>
+            <span class="glyphicon glyphicon-envelope header-icon">
+            </span>Üzenetek
+          </a>
+        </li>
         <li><a href="#">
-          <span class="glyphicon glyphicon-calendar wff-header-icon"></span>Naptár
-        </a></li>
+            <span class="glyphicon glyphicon-calendar header-icon">
+            </span>Naptár
+          </a>
+        </li>
         <li><a href="#">
-          <span class="glyphicon glyphicon-user wff-header-icon"></span>Profil
-        </a></li>
-        <li style="cursor: pointer"><a (click)="logout()">
-          <span class="glyphicon glyphicon-log-out wff-header-quit"></span>Kilépés
-        </a></li>
+            <span class="glyphicon glyphicon-user header-icon">
+            </span>Profil
+          </a>
+        </li>
+        <li style="cursor: pointer"><a class="header-quit" (click)="logout()">
+            <span class="glyphicon glyphicon-log-out header-quit-icon">
+            </span>Kilépés
+          </a>
+        </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
+

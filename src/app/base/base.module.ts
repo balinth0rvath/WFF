@@ -1,3 +1,4 @@
+import { DropdownDirective } from './dropdown.directive';
 import { AuthRoutingModule } from './../authorization/authorization-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { DashBoardComponent } from './dash-board/dash-board.component';
@@ -8,7 +9,8 @@ import { NgModule } from '@angular/core';
 ({
     declarations: [
         HeaderComponent,
-        DashBoardComponent
+        DashBoardComponent,
+        DropdownDirective
     ],
     imports: [BrowserModule],
     exports: [HeaderComponent]
