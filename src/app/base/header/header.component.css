@@ -1,5 +1,6 @@
 .header-no-border-radius {
     border-radius: 0px;
+    margin-bottom: 0px;
 }
 .header-less-left-padding {
     padding-left: 0px;

@@ -13,14 +13,7 @@ export class HeaderComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.authorizationService.authenticated
-      .subscribe((authenticated:boolean)=>{ 
-        console.log('logging...');
-        if (!authenticated) {
-          console.log('out..');
-          this.router.navigate(['signin']);
-        } 
-      });
+
   }
 
   logout() {

@@ -3,3 +3,7 @@
 .form-danger {
     color: crimson;
 }
+
+body,html{
+    height: 100%;
+}
