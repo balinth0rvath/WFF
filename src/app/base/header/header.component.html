@@ -16,15 +16,50 @@
                     header-left-dropdown-tablet 
                     header-dropdown-spacing-out">
             <li><a  style="cursor: pointer" 
-                    class="header-dropdown-spacing-top">
-                    <span class="glyphicon glyphicon-envelope header-icon-dd">
-                    </span>Admin
+                    class="header-dropdown-spacing-top"
+                    [routerLink]="['/home']">
+                    <span class="glyphicon glyphicon-home header-icon-dd">
+                    </span>TKE főoldal
+                </a>
+            </li>
+            <hr>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="glyphicon glyphicon-cog header-icon-dd">
+                    </span>Tagság admin
+                </a>
+            </li>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing"
+                    [routerLink]="['/area']">
+                    <span class="glyphicon glyphicon-cog header-icon-dd">
+                    </span>Terület admin
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
                     class="header-dropdown-spacing">
-                    <span class="glyphicon glyphicon-calendar header-icon-dd">
+                    <span class="glyphicon glyphicon-cog header-icon-dd">
+                    </span>Csoport admin
+                </a>
+            </li>
+            <hr>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="glyphicon glyphicon-equalizer header-icon-dd">
+                    </span>Területeim
+                </a>
+            </li>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="fa fa-group header-icon-dd">
                     </span>Csoportjaim
+                </a>
+            </li>
+            <hr>
+            <li><a  style="cursor: pointer" 
+                    class="header-dropdown-spacing">
+                    <span class="glyphicon glyphicon-star header-icon-dd">
+                    </span>Kedvencek
                 </a>
             </li>
         </ul>

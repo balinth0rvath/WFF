@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { DropdownDirective } from './dropdown.directive';
 import { AuthRoutingModule } from './../authorization/authorization-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -14,7 +15,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
             DropdownDirective,
             SidebarComponent
         ],
-        imports: [BrowserModule],
+        imports: [BrowserModule, RouterModule],
         exports: [HeaderComponent,
             SidebarComponent]
     })

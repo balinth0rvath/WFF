@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AccountService } from './service/account.service';
 import { AuthorizationService } from './authorization/authorization.service';
@@ -13,6 +14,7 @@ import { SigninComponent } from './authorization/signin/signin.component';
 import { SignupComponent } from './authorization/signup/signup.component';
 import { HeaderComponent } from './base/header/header.component';
 import { DashBoardComponent } from './base/dash-board/dash-board.component';
+import { AreaComponent } from './admin/area/area.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { DashBoardComponent } from './base/dash-board/dash-board.component';
     HttpModule,
     AuthorizationModule,
     AppRoutingModule, 
-    BaseModule
+    BaseModule,
+    AdminModule
   ],
   providers: [AuthorizationService, AccountService],
   bootstrap: [AppComponent]

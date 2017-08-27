@@ -1,3 +1,4 @@
+import { AreaComponent } from './admin/area/area.component';
 import { SignupComponent } from './authorization/signup/signup.component';
 import { SigninComponent } from './authorization/signin/signin.component';
 import { DashBoardComponent } from './base/dash-board/dash-board.component';
@@ -8,8 +9,8 @@ const appRoutes: Routes = [
     { path: '', component: DashBoardComponent },
     { path: 'home', component: DashBoardComponent },
     { path: 'signin', component: SigninComponent },
-    { path: 'signup', component: SignupComponent}
-
+    { path: 'signup', component: SignupComponent},
+    { path: 'area', component: AreaComponent}
 ];
 
 @NgModule({
