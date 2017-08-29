@@ -1,3 +1,4 @@
+import { GroupService } from './../../service/group.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AreaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private groupService: GroupService) { }
 
   ngOnInit() {
+    
   }
 
 }

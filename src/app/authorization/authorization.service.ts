@@ -44,7 +44,7 @@ export class AuthorizationService {
         'Authorization': Config.authType + Config.clientCreds
       });
     let options = new RequestOptions({ headers: headers });
-    
+    console.log("abc:" + Config.authType + Config.clientCreds);
     this.http.post(Config.tokenUrl, param.toString(), options)
       .map(res => res.json())
       .subscribe(
