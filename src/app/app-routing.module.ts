@@ -1,3 +1,4 @@
+import { MemberComponent } from './admin/member/member.component';
 import { EditAreaComponent } from './admin/area/edit-area/edit-area.component';
 import { AreaComponent } from './admin/area/area.component';
 import { SignupComponent } from './authorization/signup/signup.component';
@@ -14,6 +15,11 @@ const appRoutes: Routes = [
     { path: 'area', component: AreaComponent},
     { path: 'area/new', component: EditAreaComponent},
     { path: 'area/edit/:id', component: EditAreaComponent},
+    { path: 'group', component: AreaComponent},
+    { path: 'group/new', component: EditAreaComponent},
+    { path: 'group/edit/:id', component: EditAreaComponent},
+    { path: 'member', component: MemberComponent},
+    
 ];
 
 @NgModule({

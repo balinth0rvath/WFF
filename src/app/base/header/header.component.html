@@ -19,11 +19,12 @@
                     class="header-dropdown-spacing-top"
                     [routerLink]="['/home']">
                     <span class="glyphicon glyphicon-home header-icon-dd">
-                    </span>TKE főoldal
+                    </span>Főoldal
                 </a>
             </li>
             <hr>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/member']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-cog header-icon-dd">
                     </span>Tagság admin
@@ -37,6 +38,7 @@
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/group']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-cog header-icon-dd">
                     </span>Csoport admin
@@ -44,12 +46,14 @@
             </li>
             <hr>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-equalizer header-icon-dd">
                     </span>Területeim
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/home']"
                     class="header-dropdown-spacing">
                     <span class="fa fa-group header-icon-dd">
                     </span>Csoportjaim
@@ -57,6 +61,7 @@
             </li>
             <hr>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-star header-icon-dd">
                     </span>Kedvencek
@@ -77,18 +82,21 @@
       </button>
       <ul class="dropdown-menu header-right-dropdown header-right-dropdown-tablet header-dropdown-spacing-out">
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/home']"
                     class="header-dropdown-spacing-top">
                     <span class="glyphicon glyphicon-envelope header-icon-dd">
                     </span>Üzenetek
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-calendar header-icon-dd">
                     </span>Naptár
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
+                    [routerLink]="['/home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-user header-icon-dd">
                     </span>Profil
@@ -105,18 +113,21 @@
     </div>
 
     <div class="collapse navbar-collapse" id="collapse-right">
+        <a href="http://www.tukorhegy.hu">
+            <img src="../../assets/tke_logo_c_m.png" class="splash header-logo">
+        </a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">
+        <li><a [routerLink]="['/home']">
             <span class="glyphicon glyphicon-envelope header-icon">
             </span>Üzenetek
           </a>
         </li>
-        <li><a href="#">
+        <li><a [routerLink]="['/home']">
             <span class="glyphicon glyphicon-calendar header-icon">
             </span>Naptár
           </a>
         </li>
-        <li><a href="#">
+        <li><a [routerLink]="['/home']">
             <span class="glyphicon glyphicon-user header-icon">
             </span>Profil
           </a>

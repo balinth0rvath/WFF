@@ -1,9 +1,9 @@
 import { ModalModule } from 'ng2-modal';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/subscription';
 import { Group } from './../../model/group.model';
 import { GroupService } from './../../service/group.service';
-import { Component, OnInit, OnDestroy, ViewChild, ContentChild, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ContentChild, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'app-area',
@@ -12,7 +12,10 @@ import { Component, OnInit, OnDestroy, ViewChild, ContentChild, ElementRef } fro
 })
 export class AreaComponent implements OnInit, OnDestroy {
 
-  areaList: Group[];
+  type: string; // area, group
+  typeLabelArray = [];
+
+  list: Group[];
 
   status: number;
   subscription: Subscription;
@@ -20,33 +23,36 @@ export class AreaComponent implements OnInit, OnDestroy {
 
   selected: Group;
 
-  constructor(private router: Router, private groupService: GroupService) { }
+  constructor(private router: Router, private groupService: GroupService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    if (this.areaList == null) {
-      console.log('ures');
-      this.areaList = this.groupService.getList();
+    this.type = this.route.snapshot.url[0].path;
+    this.type == 'area' ? this.typeLabelArray[0] = 'Területek' : this.typeLabelArray[0] = 'Csoportok';
+    this.type == 'area' ? this.typeLabelArray[1] = 'Új terület' : this.typeLabelArray[1] = 'Új csoport';
+    this.type == 'area' ? this.typeLabelArray[2] = 'terület' : this.typeLabelArray[2] = 'csoport';
+
+    this.groupService.resource = this.type;
+    if (this.list == null) {
+      this.list = this.groupService.getList();
     }
     this.subscription = this.groupService.listChanged.subscribe(
       (list: Group[]) => {
-        this.areaList = list;
+        this.list = list;
       }
     )
     this.statusSubscription = this.groupService.status.subscribe(
       (status: number) => {
         this.status = status;
-        console.log('status update' + status);
       }
     )
-
   }
 
   onNew() {
-    this.router.navigate(['/area', 'new']);
+    this.router.navigate(['/' + this.type, 'new']);
   }
   onEdit(id: number) {
-
-    this.router.navigate(['/area', 'edit', id]);
+    this.router.navigate(['/' + this.type, 'edit', id]);
   }
 
   onSelect(id: number) {
@@ -63,17 +69,15 @@ export class AreaComponent implements OnInit, OnDestroy {
   }
 
   onPrev() {
-    console.log('előző');
     this.groupService.prevPage();
   }
 
   onNext() {
-    console.log('következő');
     this.groupService.nextPage();
   }
 
   goToPage(n: number) {
-    
+
     this.groupService.goToPage(n);
   }
 }

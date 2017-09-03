@@ -7,8 +7,9 @@ import { NgModule } from '@angular/core';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditAreaComponent } from './area/edit-area/edit-area.component';
+import { MemberComponent } from './member/member.component';
 @NgModule({
-    declarations: [AreaComponent, EditAreaComponent],
+    declarations: [AreaComponent, EditAreaComponent, MemberComponent],
     imports: [BrowserModule,ReactiveFormsModule,ModalModule, BaseModule],
     exports: [AreaComponent]
 })

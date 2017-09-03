@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class GroupService extends GenericService<Group> {
 
-  resource = 'group';
+  resource:string;
 
   constructor(private authorizationService: AuthorizationService) { 
     super(authorizationService);

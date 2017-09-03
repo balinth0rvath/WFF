@@ -3,18 +3,18 @@
 
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
 
-      <h2>Adminisztráció / Területek karbantartása / {{ editLabel }}</h2>
+      <h2>Adminisztráció / {{ typeLabelArray[0] }} / {{ typeLabelArray[1] }}</h2>
 
       <form [formGroup]="areaForm" (ngSubmit)="onSubmit()">
 
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
-              <label for="name">Terület neve</label>
+              <label for="name">{{ typeLabelArray[2] }} neve</label>
               <input type="text" id="name" class="form-control" formControlName="name">
               <span *ngIf="!areaForm.get('name').valid && areaForm.get('name').touched" 
               class="help-block">
-              Terület nevének megadása kötelező</span>
+              A {{ typeLabelArray[2] | lowercase }} nevének megadása kötelező</span>
             </div>
           </div>
         </div>
@@ -22,12 +22,12 @@
         <div class="row">
           <div class="col-xs-12">
             <div class="form-group">
-              <label for="name">Terület leírása</label>
+              <label for="name">{{ typeLabelArray[2] }} leírása</label>
               <textarea type="text" rows="4" id="description" class="form-control" formControlName="description">
               </textarea>
               <span *ngIf="!areaForm.get('description').valid && areaForm.get('description').touched" 
               class="help-block">
-              A terület leírásának megadása kötelező</span>
+              A {{ typeLabelArray[2] | lowercase }} leírásának megadása kötelező</span>
             </div>
           </div>
         </div>

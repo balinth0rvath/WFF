@@ -5,24 +5,22 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="navbar-collapse" id="bs-sidebar-navbar-collapse-1">
     <ul class="nav navbar-nav">
-        <li ><a routerLink="/home">TKE főoldal<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+        <li ><a routerLink="/home">Főoldal<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
         <li class="dropdown" baseDropdown>
             <a class="dropdown-toggle" data-toggle="dropdown">Adminisztráció<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
             <ul class="dropdown-menu forAnimate" role="menu">
-              <li><a href="#">Tagság</a></li>
+              <li><a [routerLink]="['/member']">Tagság</a></li>
               <li class="divider"></li>
               <li routerLinkActive="active"><a [routerLink]="['/area']">Területek</a></li>
-              <li><a href="#">Csoportok</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['/group']">Csoportok</a></li>
             </ul>
           </li>
-      <li><a href="#">Területeim<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-equalizer"></span></a></li>
-      <li ><a href="#">Csoportjaim<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-group"></span></a></li>    
+      <li><a [routerLink]="['/home']">Területeim<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-equalizer"></span></a></li>
+      <li ><a [routerLink]="['/home']">Csoportjaim<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-group"></span></a></li>    
       <li class="dropdown" baseDropdown>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kedvencek<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-star"></span></a>
+        <a [routerLink]="['/home']" class="dropdown-toggle" data-toggle="dropdown">Kedvencek<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-star"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
-            <li><a href="#">Kutyások</a></li>
-            <li><a href="#">Filmklub</a></li>
-            <li><a href="#">Tükörhegyi telekocsi</a></li>
+            <li><a [routerLink]="['/home']">-</a></li>
           </ul>
       </li>    
     </ul>

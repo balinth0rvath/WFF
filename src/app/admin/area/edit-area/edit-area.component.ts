@@ -10,7 +10,10 @@ import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
   styleUrls: ['./edit-area.component.css']
 })
 export class EditAreaComponent implements OnInit {
-  editLabel: string;
+  type: string; // area, group
+  typeLabelArray = [];
+  
+  
   editMode: boolean;
   id: number;
   area: Group;
@@ -18,14 +21,35 @@ export class EditAreaComponent implements OnInit {
   constructor(private groupService: GroupService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.type = this.route.snapshot.url[0].path;
+
+    console.log(this.type);
     this.route.params.subscribe(
-      (params: Params) => {
+      (params: Params) => {  
         this.id = +params['id'];
         this.editMode = params['id'] != null;
-        !this.editMode ? this.editLabel = 'Új terület' : this.editLabel = 'Terület szerkesztése';
+
+        switch(this.type) {
+          case 'area':
+          this.typeLabelArray[0]='Területek Karbantartása';
+          !this.editMode ? this.typeLabelArray[1] = 'Új terület' : 
+                           this.typeLabelArray[1] = 'Terület szerkesztése';
+          this.typeLabelArray[2]='Terület';                 
+          break;
+
+          case 'group':
+          this.typeLabelArray[0]='Csoportok Karbantartása';
+          !this.editMode ? this.typeLabelArray[1] = 'Új csoport' : 
+                           this.typeLabelArray[1] = 'Csoport szerkesztése';
+          this.typeLabelArray[2]='Csoport';
+          break;
+
+          default:
+          
+          break;
+        }
+
         this.area = this.groupService.getGroup(this.id);
-        console.log('ezide:' + this.area);
-        console.log(this.id);
         this.formInit();
       }
     )
@@ -45,20 +69,19 @@ export class EditAreaComponent implements OnInit {
 
   onSubmit() {
     const newArea = new Group(this.id, this.areaForm.value['name'],
-      this.areaForm.value['description'], 'AREA'
+      this.areaForm.value['description'], this.type
     );
     if (this.editMode) {
       
     } else {
       
     }
-    console.log('most:');
-    console.log(newArea);
+
     this.groupService.saveOne(newArea);
-    this.router.navigate(['/area']);
+    this.router.navigate(['/'+this.type]);
   }
 
   onCancel() {
-    this.router.navigate(['/area']);
+    this.router.navigate(['/'+this.type]);
   }
 }
