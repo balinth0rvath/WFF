@@ -80,10 +80,6 @@ export abstract class GenericService<T> {
             );
     }
 
-
-
-
-
     fetchList() {
         this.authService.getData<T[]>(this.resource)
             .subscribe(

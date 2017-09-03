@@ -127,9 +127,9 @@
             </span>Naptár
           </a>
         </li>
-        <li><a [routerLink]="['/home']">
+        <li class="header-mytab"><a class="header-mytab" [routerLink]="['/home']">
             <span class="glyphicon glyphicon-user header-icon">
-            </span>Profil
+            </span> <div class="header-myname">Horvath Balint</div>           
           </a>
         </li>
         <li style="cursor: pointer"><a class="header-quit" (click)="logout()">

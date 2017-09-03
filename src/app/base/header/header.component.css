@@ -104,3 +104,7 @@
 .header-logo {
     margin-left: -30px;
 }
+
+.header-myname {
+    float: right;
+}
