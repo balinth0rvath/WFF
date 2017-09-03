@@ -6,6 +6,7 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 @NgModule
     ({
@@ -13,10 +14,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
             HeaderComponent,
             DashBoardComponent,
             DropdownDirective,
-            SidebarComponent
+            SidebarComponent,
+            PaginationComponent
         ],
         imports: [BrowserModule, RouterModule],
         exports: [HeaderComponent,
-            SidebarComponent]
+            SidebarComponent, PaginationComponent]
     })
 export class BaseModule { }

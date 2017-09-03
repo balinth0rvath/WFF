@@ -11,22 +11,22 @@ export class AuthorizationService {
 
   access_token: string;
   refresh_token: string;
-  
-  authenticated: Subject<boolean>=new Subject<boolean>();
+
+  authenticated: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: Http) { }
 
   isAuthenticated() {
-    let authenticated=false;
-    console.log(this.access_token);
-    if (this.access_token==null) {
+    let authenticated = false;
+
+    if (this.access_token == null) {
       var currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      if (currentUser!=null && currentUser.token!=null) {
+      if (currentUser != null && currentUser.token != null) {
         this.access_token = currentUser.token;
       }
     }
-    
-    
+
+
     return this.access_token != null;
   }
 
@@ -49,8 +49,8 @@ export class AuthorizationService {
       .map(res => res.json())
       .subscribe(
       data => this.save(data),
-      err =>  this.authenticated.next(false)
-    );
+      err => this.authenticated.next(false)
+      );
 
   }
 
@@ -66,13 +66,13 @@ export class AuthorizationService {
         'Authorization': Config.authType + Config.clientCreds
       });
     let options = new RequestOptions({ headers: headers });
-    
+
     this.http.post(Config.tokenUrl, param.toString(), options)
       .map(res => res.json())
       .subscribe(
       data => this.saveAccessToken(data),
-      err =>  this.authenticated.next(false)
-    );
+      err => this.authenticated.next(false)
+      );
 
   }
 
@@ -80,7 +80,7 @@ export class AuthorizationService {
 
     this.access_token = data.access_token;
     this.refresh_token = data.refresh_token;
-    localStorage.setItem('currentUser', 
+    localStorage.setItem('currentUser',
       JSON.stringify({ token: this.access_token, name: name }));
     this.authenticated.next(true);
   }
@@ -89,24 +89,44 @@ export class AuthorizationService {
     this.access_token = data.access_token;
   }
 
-  getData<T>(resourceName:string) {
+  getData<T>(resourceName: string) {
     var headers = new Headers({
       'Content-type': Config.contentType,
       'Authorization': 'Bearer ' + this.access_token
     });
 
     var options = new RequestOptions({ headers: headers });
-    console.log(this.access_token);
-    return this.http.get(Config.baseUrl+resourceName, options)
+
+    return this.http.get(Config.baseUrl + resourceName, options)
       .map((res: Response) => {
         let t: T = res.json();
         return t;
       },
-      (err:Error)=>{console.log("Hiba:"+err)});
-      ;
+      (err: Error) => { console.log("Hiba:" + err) });
+    ;
 
   }
-  
+
+  saveData(data: any, resourceName: string) {
+    var headers = new Headers({
+      'Content-type': Config.contentTypeJSON,
+      'Authorization': 'Bearer ' + this.access_token
+    });
+    return this.http.post(Config.baseUrl + resourceName,
+      data,
+      { headers: headers });
+  }
+
+  deleteData(id: number, resourceName: string) {
+    var headers = new Headers({
+      'Content-type': Config.contentTypeJSON,
+      'Authorization': 'Bearer ' + this.access_token
+    });
+    return this.http.delete(Config.baseUrl + resourceName +'/'+ id,
+      { headers: headers });
+  }
+
+
   logout() {
     this.access_token = null;
     this.refresh_token = null;

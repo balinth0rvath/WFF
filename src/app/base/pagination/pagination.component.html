@@ -1,0 +1,16 @@
+<div class="row panel-footer">
+  <div class="col col-xs-4">Oldal: {{ page }} / {{ totalPages() }}
+  </div>
+  <div class="col col-xs-8">
+    <ul class="pagination hidden-xs pull-right"
+    *ngFor="let pageNum of getPages()" (click)="onPage(pageNum)">
+   
+      <li><a>{{ pageNum }}</a></li>
+   
+    </ul>
+    <ul class="pagination visible-xs pull-right">
+      <li><a (click)="onPrev()">«</a></li>
+      <li><a (click)="onNext()">»</a></li>
+    </ul>
+  </div>
+</div>

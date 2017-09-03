@@ -1,14 +1,36 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10 panel-padding">
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
+      <h2>Adminisztráció / Területek karbantartása</h2>
+      
+      <div class="alert alert-success" *ngIf="status==1" role="alert">Sikeresen mentve</div>
+      <div class="alert alert-warning" *ngIf="status==2" role="alert">Bejegyzés törölve</div>
+      <div class="alert alert-danger" *ngIf="status==-1" role="alert">Hiba a feldolgozás közben!</div>
+      
+      <modal #myModal>
+          <modal-header>
+              <h3>Törlés megerősítése</h3>
+          </modal-header>
+          <modal-content>
+              <p>Biztosan törölni szeretnéd az alábbi terület bejegyzést?</p>
+              <h4 *ngIf="selected!=null">{{ selected.name }}</h4>
+          </modal-content>
+          <modal-footer>
+              <button class="btn btn-danger" (click)="onDelete();myModal.close();">Törlés</button>
+              <button class="btn btn-default" (click)="myModal.close();">Mégsem</button>
+          </modal-footer>
+      </modal>
+      
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
             <div class="col col-xs-8">
-              <h3 class="panel-title panel-title-res">Területek karbantartása</h3>
+              <h3 class="panel-title panel-title-res">Területek</h3>
             </div>
             <div class="col col-xs-4 text-right">
-              <button type="button" class="btn btn-sm btn-primary btn-create">Új terület</button>
+              <button type="button" 
+                      class="btn btn-sm btn-primary btn-create"
+                      (click)="onNew()">Új terület</button>
             </div>
           </div>
         </div>
@@ -22,36 +44,29 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr #loop *ngFor='let area of areaList; let x = index'>
                 <td align="center">
-                  <a class="btn-sm btn-default"><em class="fa fa-pencil"></em></a>
-                  <a class="btn-sm btn-danger"><em class="fa fa-trash"></em></a>
+                  <a (click)="onEdit(area.id)" class="btn-sm btn-primary"><em class="fa fa-pencil"></em></a>
+                  <a (click)="onSelect(area.id);myModal.open()" class="btn-sm btn-danger"><em class="fa fa-trash"></em></a>
                 </td>
-                <td>Attila utca</td>
-                <td class="hidden-xs">Attila utca, kivéve a 35 és 37</td>
+                <td>{{ area.name }}</td>
+                <td class="hidden-xs">{{ area.description }}</td>
               </tr>
             </tbody>
           </table>
 
         </div>
         <div class="panel-footer">
-          <div class="row">
-            <div class="col col-xs-4">Oldal: 1/5
-            </div>
-            <div class="col col-xs-8">
-              <ul class="pagination hidden-xs pull-right">
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-              </ul>
-              <ul class="pagination visible-xs pull-right">
-                <li><a href="#">«</a></li>
-                <li><a href="#">»</a></li>
-              </ul>
-            </div>
-          </div>
+          
+          <app-pagination
+          [count]="groupService.count"
+          [page]="groupService.page"
+          [perPage]="groupService.perPage"
+          [pagesToShow]="groupService.pagesToShow"
+          [loading]="someLoadingVar"
+          (goPrev)="onPrev()"
+          (goNext)="onNext()"
+          (goPage)="goToPage($event)"></app-pagination>         
         </div>
       </div>
     </div>

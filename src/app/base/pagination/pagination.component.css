@@ -1,0 +1,12 @@
+.pagination{
+    margin:-10px; 
+    text-align: center;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.panel-table .panel-footer .col{
+    line-height: 34px;
+    height: 34px;  
+}
+  
