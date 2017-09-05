@@ -56,7 +56,7 @@ export class AreaComponent implements OnInit, OnDestroy {
   }
 
   onSelect(id: number) {
-    this.selected = this.groupService.getGroup(id);
+    this.selected = this.groupService.getOne(id);
   }
 
   onDelete() {

@@ -29,7 +29,7 @@ export abstract class GenericService<T> {
         this.authService = authorizationService;
     }
 
-    abstract getGroup(id: number)
+    abstract getOne(id: number)
 
     prevPage() {
         if (this.page > 1)
@@ -80,12 +80,14 @@ export abstract class GenericService<T> {
             );
     }
 
+    abstract sortList() 
+
     fetchList() {
         this.authService.getData<T[]>(this.resource)
             .subscribe(
             (list: T[]) => {
                 this.list = list;
-                console.log(list);
+                this.sortList();
                 this.currentList = list.slice(0, this.perPage);
                 this.count = this.list.length;
                 this.listChanged.next(this.currentList.slice());
