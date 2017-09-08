@@ -1,3 +1,5 @@
+import { AuthorizationGuardService } from './authorization/authorization-guard.service';
+import { EditMemberComponent } from './admin/member/edit-member/edit-member.component';
 import { MemberComponent } from './admin/member/member.component';
 import { EditAreaComponent } from './admin/area/edit-area/edit-area.component';
 import { AreaComponent } from './admin/area/area.component';
@@ -8,18 +10,18 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
-    { path: '', component: DashBoardComponent },
-    { path: 'home', component: DashBoardComponent },
+    { path: '', canActivate: [AuthorizationGuardService],component: DashBoardComponent },
+    { path: 'home',  canActivate: [AuthorizationGuardService],component: DashBoardComponent },
     { path: 'signin', component: SigninComponent },
     { path: 'signup', component: SignupComponent},
-    { path: 'area', component: AreaComponent},
-    { path: 'area/new', component: EditAreaComponent},
-    { path: 'area/edit/:id', component: EditAreaComponent},
-    { path: 'group', component: AreaComponent},
-    { path: 'group/new', component: EditAreaComponent},
-    { path: 'group/edit/:id', component: EditAreaComponent},
-    { path: 'member', component: MemberComponent},
-    
+    { path: 'area',canActivate: [AuthorizationGuardService], component: AreaComponent},
+    { path: 'area/new', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
+    { path: 'area/edit/:id', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
+    { path: 'group', canActivate: [AuthorizationGuardService],component: AreaComponent},
+    { path: 'group/new', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
+    { path: 'group/edit/:id', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
+    { path: 'member', canActivate: [AuthorizationGuardService], component: MemberComponent},
+    { path: 'member/show/:id', canActivate: [AuthorizationGuardService],component: EditMemberComponent}
 ];
 
 @NgModule({

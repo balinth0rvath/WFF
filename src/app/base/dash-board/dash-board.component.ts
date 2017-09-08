@@ -25,10 +25,6 @@ export class DashBoardComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    if (!this.authenticationService.isAuthenticated()) {
-      this.router.navigate(['signin']);
-    }
-
     this.subscription = this.accountService.myAccountFetched.subscribe(
       (a: Account) => {
         this.introText = a.introduction;

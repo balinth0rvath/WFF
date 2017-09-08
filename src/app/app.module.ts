@@ -1,3 +1,4 @@
+import { AuthorizationGuardService } from './authorization/authorization-guard.service';
 import { GroupService } from './service/group.service';
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +32,7 @@ import { AreaComponent } from './admin/area/area.component';
     BaseModule,
     AdminModule
   ],
-  providers: [AuthorizationService, AccountService, GroupService],
+  providers: [AuthorizationService, AccountService, GroupService, AuthorizationGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

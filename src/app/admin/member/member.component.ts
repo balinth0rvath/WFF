@@ -1,3 +1,4 @@
+import { Group } from './../../model/group.model';
 import { ModalModule } from 'ng2-modal';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs/subscription';
@@ -14,10 +15,19 @@ import { Component, OnInit, OnDestroy, ViewChild, ContentChild, ElementRef, Inpu
 export class MemberComponent implements OnInit {
 
   list: Account[];
-
+  myGrouplist: Group[];
   status: number;
   subscription: Subscription;
   statusSubscription: Subscription;
+  groupsSubscription: Subscription;
+
+  count:number;
+  page:number;
+  perPage:number;
+  pagesToShow:number;
+  someLoadingVar:string;
+  
+  
 
   selected: Account;
 
@@ -26,6 +36,14 @@ export class MemberComponent implements OnInit {
 
   ngOnInit() {
     
+    this.count=this.accountService.count;
+    this.page=this.accountService.page
+    this.perPage=this.accountService.perPage
+    this.pagesToShow=this.accountService.pagesToShow
+    this.someLoadingVar=null;
+    
+  
+
     if (this.list == null) {
       this.list = this.accountService.getList();
     }
@@ -46,6 +64,9 @@ export class MemberComponent implements OnInit {
   }
   onEdit(id: number) {
     this.router.navigate(['/member', 'edit', id]);
+  }
+  onShow(id: number) {
+    this.router.navigate(['/member', 'show', id]);
   }
 
   onSelect(id: number) {

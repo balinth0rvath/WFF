@@ -23,10 +23,22 @@ export class AreaComponent implements OnInit, OnDestroy {
 
   selected: Group;
 
+  count:number;
+  page:number;
+  perPage:number;
+  pagesToShow:number;
+  someLoadingVar:string;
+  
   constructor(private router: Router, private groupService: GroupService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.count=this.groupService.count;
+    this.page=this.groupService.page
+    this.perPage=this.groupService.perPage
+    this.pagesToShow=this.groupService.pagesToShow
+    this.someLoadingVar=null;
+    
     this.type = this.route.snapshot.url[0].path;
     this.type == 'area' ? this.typeLabelArray[0] = 'Területek' : this.typeLabelArray[0] = 'Csoportok';
     this.type == 'area' ? this.typeLabelArray[1] = 'Új terület' : this.typeLabelArray[1] = 'Új csoport';

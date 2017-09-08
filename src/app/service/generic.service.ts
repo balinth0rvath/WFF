@@ -34,7 +34,7 @@ export abstract class GenericService<T> {
     prevPage() {
         if (this.page > 1)
             this.page--;
-        
+
         this.goToPage(this.page);
 
     }
@@ -68,7 +68,10 @@ export abstract class GenericService<T> {
         this.authService.saveData(t, this.resource)
             .subscribe(
             () => { this.fetchList(); this.status.next(1); },
-            (error) => { this.status.next(-1) }
+            (error) => {
+                this.status.next(-1)
+                this.errorHandling(error);
+            }
             );
     }
 
@@ -76,11 +79,14 @@ export abstract class GenericService<T> {
         this.authService.deleteData(id, this.resource)
             .subscribe(
             () => { this.fetchList(); this.status.next(2); },
-            (error) => { this.status.next(-1) }
+            (error) => {
+                this.status.next(-1)
+                this.errorHandling(error);
+            }
             );
     }
 
-    abstract sortList() 
+    abstract sortList()
 
     fetchList() {
         this.authService.getData<T[]>(this.resource)
@@ -93,7 +99,23 @@ export abstract class GenericService<T> {
                 this.listChanged.next(this.currentList.slice());
 
             },
-            (error) => { this.status.next(-1); }
+            (error) => {
+                this.status.next(-1);
+                this.errorHandling(error);
+            }
             );
+    }
+
+    errorHandling(response: Response ) {
+        if (response.status == 401) {
+            console.log("invalid access token. trying to fetch new");
+            this.authService.getAccessToken();
+        } else if
+          (response.status >= 399 && response.status < 500) {
+            console.log('access denied');
+            this.authService.authenticated.next(false);
+        } else {
+            console.log();
+        }
     }
 }

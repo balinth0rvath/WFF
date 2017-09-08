@@ -1,7 +1,13 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-      <h2>Adminisztráció / {{ typeLabelArray[0] }} adminisztrálása</h2>
+      <div class="visible-xs">
+        <h4>Adminisztráció / {{ typeLabelArray[0] }} adminisztrálása</h4>
+      </div>
+      
+      <div class="hidden-xs">
+        <h2>Adminisztráció / {{ typeLabelArray[0] }} adminisztrálása</h2>
+      </div>
       
       <div class="alert alert-success" *ngIf="status==1" role="alert">Sikeresen mentve</div>
       <div class="alert alert-warning" *ngIf="status==2" role="alert">Bejegyzés törölve</div>
@@ -61,10 +67,10 @@
         <div class="panel-footer">
           
           <app-pagination
-          [count]="groupService.count"
-          [page]="groupService.page"
-          [perPage]="groupService.perPage"
-          [pagesToShow]="groupService.pagesToShow"
+          [count]="count"
+          [page]="page"
+          [perPage]="perPage"
+          [pagesToShow]="pagesToShow"
           [loading]="someLoadingVar"
           (goPrev)="onPrev()"
           (goNext)="onNext()"

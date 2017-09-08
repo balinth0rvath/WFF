@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
+      
+      <div class="visible-xs">
+        <h4>Adminisztráció / Tagság adminisztrálása / Felhasználó adatai</h4>
+      </div>
+      
+      <div class="hidden-xs">
+        <h2>Adminisztráció / Tagság adminisztrálása / Felhasználó adatai</h2>
+      </div>
+
+
+      <form [formGroup]="accountForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="name">Név</label>
+              <input type="text" id="name" class="form-control" formControlName="name" readonly>
+              <span *ngIf="!accountForm.get('name').valid && accountForm.get('name').touched" 
+              class="help-block">
+              Név megadása kötelező</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+              <button [disabled]="!accountForm.valid" type="submit" class="btn btn-success">Mentés</button>
+              <button type="button" class="btn btn-default" (click)="onCancel()">Mégsem</button>
+            </div>
+          </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>

@@ -1,8 +1,15 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
-      <h2>Adminisztráció / Tagság adminisztrálása</h2>
-            
+
+      <div class="visible-xs">
+        <h4>Adminisztráció / Tagság adminisztrálása</h4>
+      </div>
+
+      <div class="hidden-xs">
+        <h2>Adminisztráció / Tagság adminisztrálása</h2>
+      </div>
+
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
@@ -12,9 +19,7 @@
               </h3>
             </div>
             <div class="col col-xs-4 text-right">
-              <button type="button" 
-                      class="btn btn-sm btn-primary btn-create"
-                      (click)="onNew()">Új tag rögzítése</button>
+              <button type="button" class="btn btn-sm btn-primary btn-create" (click)="onNew()">Új tag</button>
             </div>
           </div>
         </div>
@@ -29,6 +34,7 @@
             <tbody>
               <tr #loop *ngFor='let item of list; let x = index'>
                 <td align="center">
+                  <a (click)="onShow(item.id)" class="btn-sm btn-success"><em class="fa fa-eye"></em></a>
                   <a (click)="onEdit(item.id)" class="btn-sm btn-primary"><em class="fa fa-pencil"></em></a>
                   <a (click)="onSelect(item.id)" class="btn-sm btn-danger"><em class="fa fa-trash"></em></a>
                 </td>
@@ -39,16 +45,9 @@
 
         </div>
         <div class="panel-footer">
-          
-          <app-pagination
-          [count]="accountService.count"
-          [page]="accountService.page"
-          [perPage]="accountService.perPage"
-          [pagesToShow]="accountService.pagesToShow"
-          [loading]="someLoadingVar"
-          (goPrev)="onPrev()"
-          (goNext)="onNext()"
-          (goPage)="goToPage($event)"></app-pagination>         
+
+          <app-pagination [count]="count" [page]="page" [perPage]="perPage" [pagesToShow]="pagesToShow" [loading]="someLoadingVar"
+            (goPrev)="onPrev()" (goNext)="onNext()" (goPage)="goToPage($event)"></app-pagination>
         </div>
       </div>
     </div>

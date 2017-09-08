@@ -49,7 +49,7 @@ export class EditAreaComponent implements OnInit {
           break;
         }
 
-        this.area = this.groupService.getGroup(this.id);
+        this.area = this.groupService.getOne(this.id);
         this.formInit();
       }
     )
