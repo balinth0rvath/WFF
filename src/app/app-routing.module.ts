@@ -10,22 +10,31 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const appRoutes: Routes = [
-    { path: '', canActivate: [AuthorizationGuardService],component: DashBoardComponent },
-    { path: 'home',  canActivate: [AuthorizationGuardService],component: DashBoardComponent },
+
+
     { path: 'signin', component: SigninComponent },
-    { path: 'signup', component: SignupComponent},
-    { path: 'area',canActivate: [AuthorizationGuardService], component: AreaComponent},
-    { path: 'area/new', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
-    { path: 'area/edit/:id', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
-    { path: 'group', canActivate: [AuthorizationGuardService],component: AreaComponent},
-    { path: 'group/new', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
-    { path: 'group/edit/:id', canActivate: [AuthorizationGuardService],component: EditAreaComponent},
-    { path: 'member', canActivate: [AuthorizationGuardService], component: MemberComponent},
-    { path: 'member/show/:id', canActivate: [AuthorizationGuardService],component: EditMemberComponent}
+    { path: 'signup', component: SignupComponent },
+
+    {
+        path: 'admin', canActivateChild: [AuthorizationGuardService],
+        children: [
+            { path: '', component: DashBoardComponent },
+            { path: 'area', component: AreaComponent },
+            { path: 'area/new', component: EditAreaComponent },
+            { path: 'area/edit/:id', component: EditAreaComponent },
+            { path: 'group', component: AreaComponent },
+            { path: 'group/new', component: EditAreaComponent },
+            { path: 'group/edit/:id', component: EditAreaComponent },
+            { path: 'member', component: MemberComponent },
+            { path: 'member/show/:id', component: EditMemberComponent }
+        ]
+    },
+    { path: '', redirectTo: 'admin', pathMatch: 'full' },
+    { path: '**', redirectTo: 'admin', pathMatch: 'full' }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes,{preloadingStrategy: PreloadAllModules})],
+    imports: [RouterModule.forRoot(appRoutes, { preloadingStrategy: PreloadAllModules })],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

@@ -23,7 +23,7 @@ export class SigninComponent implements OnInit {
       (authenticated:boolean)=>{ 
         this.loginFailed = !authenticated; 
         if (!this.loginFailed) {
-          this.router.navigate(['home'])
+          this.router.navigate(['admin'])
         } 
         
       },

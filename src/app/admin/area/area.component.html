@@ -4,29 +4,27 @@
       <div class="visible-xs">
         <h4>Adminisztráció / {{ typeLabelArray[0] }} adminisztrálása</h4>
       </div>
-      
+
       <div class="hidden-xs">
         <h2>Adminisztráció / {{ typeLabelArray[0] }} adminisztrálása</h2>
       </div>
-      
-      <div class="alert alert-success" *ngIf="status==1" role="alert">Sikeresen mentve</div>
-      <div class="alert alert-warning" *ngIf="status==2" role="alert">Bejegyzés törölve</div>
-      <div class="alert alert-danger" *ngIf="status==-1" role="alert">Hiba a feldolgozás közben!</div>
-      
+
+      <app-feedback [feedbackStatus]='status'></app-feedback>
+
       <modal #myModal>
-          <modal-header>
-              <h3>Törlés megerősítése</h3>
-          </modal-header>
-          <modal-content>
-              <p>Biztosan törölni szeretnéd az alábbi {{ typeLabelArray[2] }} bejegyzést?</p>
-              <h4 *ngIf="selected!=null">{{ selected.name }}</h4>
-          </modal-content>
-          <modal-footer>
-              <button class="btn btn-danger" (click)="onDelete();myModal.close();">Törlés</button>
-              <button class="btn btn-default" (click)="myModal.close();">Mégsem</button>
-          </modal-footer>
+        <modal-header>
+          <h3>Törlés megerősítése</h3>
+        </modal-header>
+        <modal-content>
+          <p>Biztosan törölni szeretnéd az alábbi {{ typeLabelArray[2] }} bejegyzést?</p>
+          <h4 *ngIf="selected!=null">{{ selected.name }}</h4>
+        </modal-content>
+        <modal-footer>
+          <button class="btn btn-danger" (click)="onDelete();myModal.close();">Törlés</button>
+          <button class="btn btn-default" (click)="myModal.close();">Mégsem</button>
+        </modal-footer>
       </modal>
-      
+
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
@@ -36,9 +34,7 @@
               </h3>
             </div>
             <div class="col col-xs-4 text-right">
-              <button type="button" 
-                      class="btn btn-sm btn-primary btn-create"
-                      (click)="onNew()">{{ typeLabelArray[1] }}</button>
+              <button type="button" class="btn btn-sm btn-primary btn-create" (click)="onNew()">{{ typeLabelArray[1] }}</button>
             </div>
           </div>
         </div>
@@ -65,16 +61,9 @@
 
         </div>
         <div class="panel-footer">
-          
-          <app-pagination
-          [count]="count"
-          [page]="page"
-          [perPage]="perPage"
-          [pagesToShow]="pagesToShow"
-          [loading]="someLoadingVar"
-          (goPrev)="onPrev()"
-          (goNext)="onNext()"
-          (goPage)="goToPage($event)"></app-pagination>         
+
+          <app-pagination [count]="this.groupService.count" [page]="this.groupService.page" [perPage]="this.groupService.perPage" [pagesToShow]="this.groupService.pagesToShow"
+            [loading]="someLoadingVar" (goPrev)="onPrev()" (goNext)="onNext()" (goPage)="goToPage($event)"></app-pagination>
         </div>
       </div>
     </div>

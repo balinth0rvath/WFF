@@ -21,28 +21,12 @@ export class MemberComponent implements OnInit {
   statusSubscription: Subscription;
   groupsSubscription: Subscription;
 
-  count:number;
-  page:number;
-  perPage:number;
-  pagesToShow:number;
-  someLoadingVar:string;
-  
-  
-
   selected: Account;
 
   constructor(private router: Router, private accountService: AccountService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
-    this.count=this.accountService.count;
-    this.page=this.accountService.page
-    this.perPage=this.accountService.perPage
-    this.pagesToShow=this.accountService.pagesToShow
-    this.someLoadingVar=null;
-    
-  
 
     if (this.list == null) {
       this.list = this.accountService.getList();
@@ -60,13 +44,13 @@ export class MemberComponent implements OnInit {
   }
 
   onNew() {
-    this.router.navigate(['/member', 'new']);
+    this.router.navigate(['admin','member', 'new']);
   }
   onEdit(id: number) {
-    this.router.navigate(['/member', 'edit', id]);
+    this.router.navigate(['admin','member', 'edit', id]);
   }
   onShow(id: number) {
-    this.router.navigate(['/member', 'show', id]);
+    this.router.navigate(['admin','member', 'show', id]);
   }
 
   onSelect(id: number) {

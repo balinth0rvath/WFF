@@ -78,10 +78,10 @@ export class EditAreaComponent implements OnInit {
     }
 
     this.groupService.saveOne(newArea);
-    this.router.navigate(['/'+this.type]);
+    this.router.navigate(['admin/'+this.type]);
   }
 
   onCancel() {
-    this.router.navigate(['/'+this.type]);
+    this.router.navigate(['admin/'+this.type]);
   }
 }

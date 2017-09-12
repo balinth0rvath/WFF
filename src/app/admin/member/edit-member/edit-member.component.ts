@@ -42,11 +42,11 @@ export class EditMemberComponent implements OnInit {
   }
   onSubmit() {
     
-    this.router.navigate(['/member']);
+    this.router.navigate(['admin','member']);
   }
 
   onCancel() {
-    this.router.navigate(['/member']);
+    this.router.navigate(['admin','member']);
   }
 
 }

@@ -9,16 +9,16 @@
         <li class="dropdown" baseDropdown>
             <a>Adminisztráció<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
             <ul class="dropdown-menu forAnimate" role="menu">
-              <li><a [routerLink]="['/member']">Tagság</a></li>
+              <li><a [routerLink]="['admin','member']">Tagság</a></li>
               <li class="divider"></li>
-              <li routerLinkActive="active"><a [routerLink]="['/area']">Területek</a></li>
-              <li routerLinkActive="active"><a [routerLink]="['/group']">Csoportok</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['admin','area']">Területek</a></li>
+              <li routerLinkActive="active"><a [routerLink]="['admin','group']">Csoportok</a></li>
             </ul>
           </li>
-      <li><a [routerLink]="['/home']">Területeim<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-equalizer"></span></a></li>
-      <li ><a [routerLink]="['/home']">Csoportjaim<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-group"></span></a></li>    
+      <li><a [routerLink]="['admin','home']">Területeim<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-equalizer"></span></a></li>
+      <li ><a [routerLink]="['admin','home']">Csoportjaim<span style="font-size:16px;" class="pull-right hidden-xs showopacity fa fa-group"></span></a></li>    
       <li class="dropdown" baseDropdown>
-        <a [routerLink]="['/home']">Kedvencek<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-star"></span></a>
+        <a [routerLink]="['admin','home']">Kedvencek<span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-star"></span></a>
           <ul class="dropdown-menu forAnimate" role="menu">
             <li><a [routerLink]="['/home']">-</a></li>
           </ul>

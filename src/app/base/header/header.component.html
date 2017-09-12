@@ -17,14 +17,14 @@
                     header-dropdown-spacing-out">
             <li><a  style="cursor: pointer" 
                     class="header-dropdown-spacing-top"
-                    [routerLink]="['/home']">
+                    [routerLink]="['admin','home']">
                     <span class="glyphicon glyphicon-home header-icon-dd">
                     </span>Főoldal
                 </a>
             </li>
             <hr>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/member']"
+                    [routerLink]="['admin','member']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-cog header-icon-dd">
                     </span>Tagság admin
@@ -32,13 +32,13 @@
             </li>
             <li><a  style="cursor: pointer" 
                     class="header-dropdown-spacing"
-                    [routerLink]="['/area']">
+                    [routerLink]="['admin','area']">
                     <span class="glyphicon glyphicon-cog header-icon-dd">
                     </span>Terület admin
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/group']"
+                    [routerLink]="['admin','group']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-cog header-icon-dd">
                     </span>Csoport admin
@@ -46,14 +46,14 @@
             </li>
             <hr>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/home']"
+                    [routerLink]="['admin','home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-equalizer header-icon-dd">
                     </span>Területeim
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/home']"
+                    [routerLink]="['admin','home']"
                     class="header-dropdown-spacing">
                     <span class="fa fa-group header-icon-dd">
                     </span>Csoportjaim
@@ -61,7 +61,7 @@
             </li>
             <hr>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/home']"
+                    [routerLink]="['admin','home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-star header-icon-dd">
                     </span>Kedvencek
@@ -82,21 +82,21 @@
       </button>
       <ul class="dropdown-menu header-right-dropdown header-right-dropdown-tablet header-dropdown-spacing-out">
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/home']"
+                    [routerLink]="['admin','home']"
                     class="header-dropdown-spacing-top">
                     <span class="glyphicon glyphicon-envelope header-icon-dd">
                     </span>Üzenetek
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/home']"
+                    [routerLink]="['admin','home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-calendar header-icon-dd">
                     </span>Naptár
                 </a>
             </li>
             <li><a  style="cursor: pointer" 
-                    [routerLink]="['/home']"
+                    [routerLink]="['admin','home']"
                     class="header-dropdown-spacing">
                     <span class="glyphicon glyphicon-user header-icon-dd">
                     </span>Profil
@@ -117,17 +117,17 @@
             <img src="../../assets/tke_logo_c_m.png" class="splash header-logo">
         </a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a [routerLink]="['/home']">
+        <li><a [routerLink]="['admin','home']">
             <span class="glyphicon glyphicon-envelope header-icon">
             </span>Üzenetek
           </a>
         </li>
-        <li><a [routerLink]="['/home']">
+        <li><a [routerLink]="['admin','home']">
             <span class="glyphicon glyphicon-calendar header-icon">
             </span>Naptár
           </a>
         </li>
-        <li class="header-mytab"><a class="header-mytab" [routerLink]="['/home']">
+        <li class="header-mytab"><a class="header-mytab" [routerLink]="['admin','home']">
             <span class="glyphicon glyphicon-user header-icon">
             </span> <div class="header-myname">Profil</div>           
           </a>

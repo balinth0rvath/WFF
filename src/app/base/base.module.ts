@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { NgModule } from '@angular/core';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { FeedbackComponent } from './feedback/feedback.component';
 
 @NgModule
     ({
@@ -15,10 +16,11 @@ import { PaginationComponent } from './pagination/pagination.component';
             DashBoardComponent,
             DropdownDirective,
             SidebarComponent,
-            PaginationComponent
+            PaginationComponent,
+            FeedbackComponent
         ],
         imports: [BrowserModule, RouterModule],
         exports: [HeaderComponent,
-            SidebarComponent, PaginationComponent]
+            SidebarComponent, PaginationComponent, FeedbackComponent]
     })
 export class BaseModule { }

@@ -10,6 +10,8 @@
         <h2>Adminisztráció / Tagság adminisztrálása</h2>
       </div>
 
+      <app-feedback [feedbackStatus]='status'></app-feedback>
+
       <div class="panel panel-default panel-table">
         <div class="panel-heading">
           <div class="row">
@@ -46,8 +48,16 @@
         </div>
         <div class="panel-footer">
 
-          <app-pagination [count]="count" [page]="page" [perPage]="perPage" [pagesToShow]="pagesToShow" [loading]="someLoadingVar"
-            (goPrev)="onPrev()" (goNext)="onNext()" (goPage)="goToPage($event)"></app-pagination>
+            <app-pagination
+            [count]="this.accountService.count"
+            [page]="this.accountService.page"
+            [perPage]="this.accountService.perPage"
+            [pagesToShow]="this.accountService.pagesToShow"
+            [loading]="someLoadingVar"
+            (goPrev)="onPrev()"
+            (goNext)="onNext()"
+            (goPage)="goToPage($event)">
+            </app-pagination>   
         </div>
       </div>
     </div>
