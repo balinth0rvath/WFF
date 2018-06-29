@@ -8,5 +8,5 @@ export class Config {
     static contentType = 'application/x-www-form-urlencoded; charset=utf-8';
     static contentTypeJSON = 'application/json; charset=utf-8';
     static authType = 'Basic ';
-    static clientCreds = btoa("wfb:");
+    static clientCreds = btoa("");
 }
